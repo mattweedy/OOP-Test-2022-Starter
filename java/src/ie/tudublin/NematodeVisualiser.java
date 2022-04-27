@@ -10,6 +10,7 @@ public class NematodeVisualiser extends PApplet
 {
     // create new arraylist of nematodes
     ArrayList<Nematode> nematodes = new ArrayList<Nematode>();
+    public float border;
 
 	public void keyPressed()
 	{		
@@ -28,22 +29,32 @@ public class NematodeVisualiser extends PApplet
 	{
 		colorMode(HSB);
 		background(0);
-		smooth();				
+		smooth();
+        loadNematodes();		
 	}
 	
 
 	public void loadNematodes()
 	{
-        Table table = loadTable("nematodes.csv", "header");
+        Table table = loadTable("data/nematodes.csv", "header");
         for(TableRow r:table.rows())
         {
             Nematode nema = new Nematode(r);
             nematodes.add(nema);
+            System.out.println(nema.toString());
         }
 	}
 
+    public void drawNematode() {
+        // looping through each nematode and calling it to render
+        for (Nematode n : nematodes) {
+            n.render(this);
+        }
+    }
 
 	public void draw()
-	{	
+	{
+        // calling drawNematode
+        drawNematode();
 	}
 }
