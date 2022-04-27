@@ -12,21 +12,22 @@ public class NematodeVisualiser extends PApplet
     ArrayList<Nematode> nematodes = new ArrayList<Nematode>();
     public float border;
     public int index = 0;
-    public int loopedIndex = 0;
 
 	public void keyPressed()
 	{		
 		if (keyCode == LEFT)
 		{
             // change which nematode is being displayed
-            if (index > 0) {
-                index--;
+            index--;
+            if (index == -1) {
+                index = 13;
             }
 		}		
 		if (keyCode == RIGHT)
 		{
-            if (index <= nematodes.size()) {
-                index++;
+            index++;
+            if (index == 14) {
+                index = 0;
             }
 		}		
 	}
