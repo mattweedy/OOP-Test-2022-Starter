@@ -91,7 +91,13 @@ public class Nematode {
             pa.fill(0);
             pa.stroke(255, 255, 255);
             pa.circle(pa.width/2, (pa.height/2)+(offset*i), 45);
+            if (this.limbs == 1) {
+                pa.stroke(255, 255, 255);
+                pa.line((pa.width/2)+20, (pa.height/2)+(offset*i), (pa.width/2)+40, (pa.height/2)+(offset*i));
+                pa.line((pa.width/2)-20, (pa.height/2)+(offset*i), (pa.width/2)-40, (pa.height/2)+(offset*i));
+            }
         }
+
         
 
         if (this.gender == "m") {
