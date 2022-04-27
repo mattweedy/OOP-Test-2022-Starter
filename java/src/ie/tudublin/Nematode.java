@@ -3,6 +3,9 @@ package ie.tudublin;
 import processing.core.PApplet;
 import processing.data.TableRow;
 
+// Matthew Tweedy
+// C20381946
+
 public class Nematode {
     String name;
     float length;
@@ -87,6 +90,11 @@ public class Nematode {
         pa.text(name, halfW, halfH - 200);
         pa.strokeWeight(5);
 
+        // setting up vars to string compare for gender
+        String male = "m";
+        String female = "f";
+        String hermaph = "h";
+
         for (int i = 0; i < this.length; i++) {
             pa.fill(0);
             pa.stroke(255);
@@ -99,28 +107,24 @@ public class Nematode {
                 pa.line((halfW)-25, (halfH)+(offset*i), (halfW)-45, (halfH)+(offset*i));
             }
             // gender
-            // -- couldn't figure out how to check for gender so all have male and female
-
-            // male 
-            pa.line(halfW, (halfH)+(offset*(this.length-1)+25), halfW, (halfH)+(offset*(this.length-1)+40));
-            pa.circle(halfW, (halfH)+(offset*(this.length-1)+45), 15);
-
-            // female
-            pa.circle(halfW, (halfH)+(offset*(length-1)), 15);
-
-            // if (this.gender == "m") {
-                // pa.line(halfW, (halfH)+(offset*(this.length-1)+25), halfW, (halfH)+(offset*(this.length-1)+40));
-                // pa.circle(halfW, (halfH)+(offset*(this.length-1)+45), 15);
-            // } else if (this.gender == "f") {
-                // pa.circle(halfW, (halfH)+(offset*(length-1)), 15);
-            // } else if (this.gender == "h") {
-                // pa.line(halfW, (halfH)+(offset*(this.length-1)+25), halfW, (halfH)+(offset*(this.length-1)+40));
-                // pa.circle(halfW, (halfH)+(offset*(this.length-1)+45), 15);
-                // pa.circle(halfW, (halfH)+(offset*(length-1)), 15);
-            // }
+            if (this.gender.compareTo(male) == 0) {
+                pa.line(halfW, (halfH)+(offset*(this.length-1)+25), halfW, (halfH)+(offset*(this.length-1)+40));
+                pa.circle(halfW, (halfH)+(offset*(this.length-1)+45), 15);
+            } else if (this.gender.compareTo(female) == 0) {
+                pa.circle(halfW, (halfH)+(offset*(length-1)), 15);
+            } else if (this.gender.compareTo(hermaph) == 0) {
+                pa.line(halfW, (halfH)+(offset*(this.length-1)+25), halfW, (halfH)+(offset*(this.length-1)+40));
+                pa.circle(halfW, (halfH)+(offset*(this.length-1)+45), 15);
+                pa.circle(halfW, (halfH)+(offset*(length-1)), 15);
+            }
 
             // eyes
-
+            if (this.eyes == 1) {
+                pa.line(halfW+15, (halfH)-(offset-25), halfW+30, (halfH)-(offset));
+                pa.line(halfW-15, (halfH)-(offset-25), halfW-30, (halfH)-(offset));
+                pa.circle((halfH)-(offset-15), (halfH)-(offset), 15);
+                pa.circle((halfH)-(offset-75), (halfH)-(offset), 15);
+            }
 
         }
 
