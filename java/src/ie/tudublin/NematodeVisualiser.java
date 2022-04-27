@@ -20,7 +20,7 @@ public class NematodeVisualiser extends PApplet
             // change which nematode is being displayed
             index--;
             if (index == -1) {
-                index = 13;
+                index = 12;
             }
 		}		
 		if (keyCode == RIGHT)
