@@ -76,43 +76,56 @@ public class Nematode {
 
     public void render(NematodeVisualiser pa)
 	{
-        // pa.stroke(255, 0, 255);
-        // pa.textAlign(PApplet.CENTER, PApplet.CENTER);
-        // pa.textSize(20);
+        float halfW = pa.width/2;
+        float halfH = pa.height/2;
         float offset = 45; // offset amount for drawing segments
 
         // printing names
         pa.textSize(20);
         pa.fill(255);
         pa.textAlign(PApplet.CENTER, PApplet.CENTER);
-        pa.text(name, pa.width / 2, pa.height/2 - 200);
+        pa.text(name, halfW, halfH - 200);
+        pa.strokeWeight(5);
 
         for (int i = 0; i < this.length; i++) {
             pa.fill(0);
-            pa.stroke(255, 255, 255);
-            pa.circle(pa.width/2, (pa.height/2)+(offset*i), 45);
+            pa.stroke(255);
+            pa.circle(halfW, (halfH)+(offset*i), 45);
+
+            // limbs
             if (this.limbs == 1) {
-                pa.stroke(255, 255, 255);
-                pa.line((pa.width/2)+20, (pa.height/2)+(offset*i), (pa.width/2)+40, (pa.height/2)+(offset*i));
-                pa.line((pa.width/2)-20, (pa.height/2)+(offset*i), (pa.width/2)-40, (pa.height/2)+(offset*i));
+                pa.stroke(255);
+                pa.line((halfW)+25, (halfH)+(offset*i), (halfW)+45, (halfH)+(offset*i));
+                pa.line((halfW)-25, (halfH)+(offset*i), (halfW)-45, (halfH)+(offset*i));
             }
+            // gender
+            // -- couldn't figure out how to check for gender so all have male and female
+
+            // male 
+            pa.line(halfW, (halfH)+(offset*(this.length-1)+25), halfW, (halfH)+(offset*(this.length-1)+40));
+            pa.circle(halfW, (halfH)+(offset*(this.length-1)+45), 15);
+
+            // female
+            pa.circle(halfW, (halfH)+(offset*(length-1)), 15);
+
+            // if (this.gender == "m") {
+                // pa.line(halfW, (halfH)+(offset*(this.length-1)+25), halfW, (halfH)+(offset*(this.length-1)+40));
+                // pa.circle(halfW, (halfH)+(offset*(this.length-1)+45), 15);
+            // } else if (this.gender == "f") {
+                // pa.circle(halfW, (halfH)+(offset*(length-1)), 15);
+            // } else if (this.gender == "h") {
+                // pa.line(halfW, (halfH)+(offset*(this.length-1)+25), halfW, (halfH)+(offset*(this.length-1)+40));
+                // pa.circle(halfW, (halfH)+(offset*(this.length-1)+45), 15);
+                // pa.circle(halfW, (halfH)+(offset*(length-1)), 15);
+            // }
+
+            // eyes
+
+
         }
 
         
 
-        if (this.gender == "m") {
-            for (int i = 0; i < this.length; i++) {
-            }
-        } else if (this.gender == "f") {
-            for (int i = 0; i < this.length; i++) {
-            }
-        } else if (this.gender == "h") {
-            for (int i = 0; i < this.length; i++) {
-            }
-        } else if (this.gender == "n") {
-            for (int i = 0; i < this.length; i++) {
-            }
-        }
         
     }
 
